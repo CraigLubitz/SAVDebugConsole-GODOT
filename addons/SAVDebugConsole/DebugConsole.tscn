@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4y7nokfiuluh"]
+
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/DebugConsole.gd" id="1_8883r"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/ScrollContainera.gd" id="2_ol78q"]
+[ext_resource type="StyleBox" uid="uid://b62lp4ve7ancs" path="res://addons/SAVDebugConsole/button2.tres" id="3_q5tqx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0cgv"]
+bg_color = Color(0, 0.0117647, 0.00392157, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_yxf10"]
+
+[sub_resource type="SystemFont" id="SystemFont_4eqe7"]
+
+[node name="DebugConsole" type="Node2D"]
+script = ExtResource("1_8883r")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 870.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.324
+anchor_bottom = 1.455
+offset_left = 100.0
+offset_top = 25.0
+offset_right = 670.12
+offset_bottom = -117.57
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0cgv")
+horizontal_scroll_mode = 0
+script = ExtResource("2_ol78q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 45
+text = "-- List empty --"
+fit_content = true
+
+[node name="LogcatClear" type="Button" parent="Control"]
+visible = false
+layout_mode = 2
+offset_left = 1509.0
+offset_top = 43.0
+offset_right = 1609.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
+theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_fonts/font = SubResource("SystemFont_yxf10")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("3_q5tqx")
+theme_override_styles/hover = ExtResource("3_q5tqx")
+text = "C"
+
+[node name="PrintTestLogEntry" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 1340.0
+offset_top = 40.0
+offset_right = 1492.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
+theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_fonts/font = SubResource("SystemFont_4eqe7")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("3_q5tqx")
+theme_override_styles/hover = ExtResource("3_q5tqx")
+text = "print"
+
+[connection signal="pressed" from="Control/LogcatClear" to="." method="_on_logcat_clear_pressed"]
+[connection signal="pressed" from="Control/PrintTestLogEntry" to="." method="_on_button_pressed"]

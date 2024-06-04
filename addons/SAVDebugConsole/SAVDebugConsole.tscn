@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csm7ybakbbdsx"]
+
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/SAVDebugConsole.gd" id="1_j8ntm"]
+
+[node name="SavDebugConsole" type="Node2D"]
+script = ExtResource("1_j8ntm")

@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="SAV Debug Console - GODOT"
+run/main_scene="res://SAVDebugConsoleExample.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+config/icon="res://icon.svg"
+
+[debug]
+
+file_logging/enable_file_logging=true
+
+[dotnet]
+
+project/assembly_name="test debug console 1"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SAVDebugConsole/plugin.cfg")
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/android/enable_long_press_as_right_click=true
+pointing/android/enable_pan_and_scale_gestures=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
