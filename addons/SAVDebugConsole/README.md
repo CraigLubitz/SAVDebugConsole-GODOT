@@ -3,9 +3,9 @@
 
 &nbsp;
 
-![SAVDebugConsole Screenshot_Desktop](Screenshot_Desktop.png){: width="40%"}
+![SAVDebugConsole Screenshot_Desktop](Screenshot_Desktop.png)
 &nbsp;
-![SAVDebugConsole Screenshot_Quest](Screenshot_Quest.png){: width="40%"}
+![SAVDebugConsole Screenshot_Quest](Screenshot_Quest.png)
 
 Runtime ("in app") Debug Console for GODOT
 
