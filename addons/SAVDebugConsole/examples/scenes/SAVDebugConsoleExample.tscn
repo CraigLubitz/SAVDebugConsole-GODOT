@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx73iqed1q8ej"]
+
+[ext_resource type="PackedScene" uid="uid://b4y7nokfiuluh" path="res://addons/SAVDebugConsole/scenes/DebugConsole.tscn" id="1_nk1kg"]
+
+[node name="SAVDebugConsoleExample" type="Node3D"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_nk1kg")]

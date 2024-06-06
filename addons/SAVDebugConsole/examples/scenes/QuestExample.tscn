@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://gvl6ssi1sopn"]
+
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/examples/scripts/3D_Main.gd" id="1_0d7v8"]
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="3_1qodn"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_y2c1x"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_xqvph"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_iwdlh"]
+[ext_resource type="PackedScene" uid="uid://b4y7nokfiuluh" path="res://addons/SAVDebugConsole/scenes/DebugConsole.tscn" id="7_5bxcy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbe3t"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_t5k5w"]
+sky_material = SubResource("ProceduralSkyMaterial_wbe3t")
+
+[sub_resource type="Environment" id="Environment_x6wmw"]
+background_mode = 2
+sky = SubResource("Sky_t5k5w")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ooecd"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_flbjs"]
+size = Vector3(5, 0.1, 5)
+
+[node name="3D_Main" type="Node3D"]
+script = ExtResource("1_0d7v8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x6wmw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_ooecd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_flbjs")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170874, 0)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160328, 0.347228)
+
+[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/XRController3D" instance=ExtResource("3_1qodn")]
+
+[node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/XRController3D2" instance=ExtResource("4_y2c1x")]
+
+[node name="FunctionPointer" parent="XROrigin3D/XRController3D2" instance=ExtResource("5_xqvph")]
+show_laser = 2
+laser_length = 1
+
+[node name="Viewport2Din3D2" parent="." instance=ExtResource("6_iwdlh")]
+transform = Transform3D(-0.001, 0, -8.74228e-11, 0, 0.001, 0, 8.74228e-11, 0, -0.001, 0.0215321, 1.19006, -0.385635)
+screen_size = Vector2(640, 360)
+scene = ExtResource("7_5bxcy")
+viewport_size = Vector2(800, 600)

@@ -1,0 +1,263 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.craiglubitz.savdebugconsole"
+4    android:installLocation="auto"
+5    android:versionCode="1"
+6    android:versionName="1.0.0" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="24"
+10        android:targetSdkVersion="34" />
+11
+12    <supports-screens
+12-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:8:5-12:40
+13        android:largeScreens="true"
+13-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:11:9-36
+14        android:normalScreens="true"
+14-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:10:9-37
+15        android:smallScreens="true"
+15-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:9:9-36
+16        android:xlargeScreens="true" />
+16-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:12:9-37
+17
+18    <uses-feature
+18-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:14:5-16:35
+19        android:glEsVersion="0x00030000"
+19-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:15:9-41
+20        android:required="true" />
+20-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:16:9-32
+21
+22    <uses-permission android:name="android.permission.READ_LOGS" />
+22-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:11:5-68
+22-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:11:22-65
+23    <uses-permission android:name="com.oculus.permission.HAND_TRACKING" />
+23-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:12:5-75
+23-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:12:22-72
+24
+25    <uses-feature
+25-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:13:5-110
+26        android:name="oculus.software.handtracking"
+26-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:13:40-83
+27        android:required="true" />
+27-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:13:84-107
+28    <uses-feature
+28-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:7:5-10:31
+29        android:name="android.hardware.vr.headtracking"
+29-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:8:9-56
+30        android:required="true"
+30-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:9:9-32
+31        android:version="1" />
+31-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:10:9-28
+32
+33    <application
+33-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:18:5-52:19
+34        android:allowBackup="false"
+34-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:20:9-36
+35        android:appCategory="game"
+35-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:22:9-35
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.8.0] C:\Users\Craig\.gradle\caches\transforms-3\245f1aa0863a677574781ac0a1900f6e\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+37        android:debuggable="true"
+38        android:extractNativeLibs="false"
+39        android:hasFragileUserData="false"
+39-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:24:9-43
+40        android:icon="@mipmap/icon"
+40-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:21:9-36
+41        android:isGame="true"
+41-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:23:9-30
+42        android:label="@string/godot_project_name_string"
+42-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:19:9-58
+43        android:requestLegacyExternalStorage="false" >
+43-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:25:9-53
+44        <meta-data
+44-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:25:9-125
+45            android:name="com.oculus.supportedDevices"
+45-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:25:41-83
+46            android:value="quest2|quest3|questpro" />
+46-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:25:84-122
+47        <meta-data
+47-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:26:9-112
+48            android:name="com.oculus.handtracking.frequency"
+48-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:26:41-89
+49            android:value="LOW" />
+49-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:26:90-109
+50        <meta-data
+50-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:27:9-111
+51            android:name="com.oculus.handtracking.version"
+51-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:27:41-87
+52            android:value="V2.0" />
+52-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:27:88-108
+53
+54        <activity
+54-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:33:9-50:20
+55            android:name="com.godot.game.GodotApp"
+55-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:34:13-37
+56            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
+56-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:41:13-141
+57            android:excludeFromRecents="false"
+57-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:38:13-47
+58            android:exported="true"
+58-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:39:13-36
+59            android:label="@string/godot_project_name_string"
+59-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:35:13-62
+60            android:launchMode="singleInstancePerTask"
+60-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:37:13-55
+61            android:resizeableActivity="true"
+61-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:42:13-47
+62            android:screenOrientation="landscape"
+62-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:40:13-50
+63            android:theme="@style/GodotAppSplashTheme" >
+63-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:36:13-55
+64            <intent-filter>
+64-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:45:13-49:29
+65                <action android:name="android.intent.action.MAIN" />
+65-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:46:17-69
+65-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:46:25-66
+66
+67                <category android:name="android.intent.category.DEFAULT" />
+67-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:47:17-76
+67-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:47:27-73
+68                <category android:name="android.intent.category.LAUNCHER" />
+68-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:48:17-77
+68-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:48:27-74
+69            </intent-filter>
+70            <intent-filter>
+70-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:36:5-47:21
+71                <action android:name="android.intent.action.MAIN" />
+71-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:46:17-69
+71-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:46:25-66
+72
+73                <category android:name="android.intent.category.LAUNCHER" />
+73-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:48:17-77
+73-->D:\development\godot\SAVDebugConsole-GODOT\android\build\AndroidManifest.xml:48:27-74
+74
+75                <!--
+76                    Enable access to OpenXR on Oculus mobile devices, no-op on other Android
+77					platforms.
+78                -->
+79                <category android:name="com.oculus.intent.category.VR" />
+79-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:42:6-63
+79-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:42:16-60
+80
+81                <!--
+82                    OpenXR category tag to indicate the activity starts in an immersive OpenXR mode.
+83					See https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#android-runtime-category.
+84                -->
+85                <category android:name="org.khronos.openxr.intent.category.IMMERSIVE_HMD" />
+85-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:46:6-82
+85-->D:\development\godot\SAVDebugConsole-GODOT\android\build\src\debug\AndroidManifest.xml:46:16-79
+86            </intent-filter>
+87        </activity>
+88        <!-- Records the version of the Godot editor used for building -->
+89        <meta-data
+90            android:name="org.godotengine.editor.version"
+91            android:value="4.2.2.stable" /> <!-- Records the version of the Godot library -->
+92        <meta-data
+92-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:12:9-14:44
+93            android:name="org.godotengine.library.version"
+93-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:13:13-59
+94            android:value="4.2.2.stable" />
+94-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:14:13-41
+95
+96        <service android:name="org.godotengine.godot.GodotDownloaderService" />
+96-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:9-80
+96-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:18-77
+97
+98        <activity
+98-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:9-22:75
+99            android:name="org.godotengine.godot.utils.ProcessPhoenix"
+99-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:19:13-70
+100            android:exported="false"
+100-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:20:13-37
+101            android:process=":phoenix"
+101-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:21:13-39
+102            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+102-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:22:13-72
+103
+104        <provider
+104-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:24:9-32:20
+105            android:name="androidx.core.content.FileProvider"
+105-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:25:13-62
+106            android:authorities="com.craiglubitz.savdebugconsole.fileprovider"
+106-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:26:13-64
+107            android:exported="false"
+107-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:27:13-37
+108            android:grantUriPermissions="true" >
+108-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:28:13-47
+109            <meta-data
+109-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:29:13-31:64
+110                android:name="android.support.FILE_PROVIDER_PATHS"
+110-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:30:17-67
+111                android:resource="@xml/godot_provider_paths" />
+111-->[godot-lib.template_debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\1d2f4d75c034fbcf1699ed1528521307\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:31:17-61
+112        </provider>
+113
+114        <meta-data
+114-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:13:9-15:83
+115            android:name="org.godotengine.plugin.v2.GodotOpenXRMeta"
+115-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:14:13-69
+116            android:value="org.godotengine.openxr.vendors.meta.GodotOpenXRMeta" />
+116-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:15:13-80
+117        <meta-data
+117-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:19:9-21:36
+118            android:name="com.oculus.vr.focusaware"
+118-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:20:13-52
+119            android:value="true" />
+119-->[godotopenxrmeta-debug.aar] C:\Users\Craig\.gradle\caches\transforms-3\8446baab8a2d772242734cd98de8c7fc\transformed\jetified-godotopenxrmeta-debug\AndroidManifest.xml:21:13-33
+120
+121        <provider
+121-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+122            android:name="androidx.startup.InitializationProvider"
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+123            android:authorities="com.craiglubitz.savdebugconsole.androidx-startup"
+123-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+124            android:exported="false" >
+124-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+125            <meta-data
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+126                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+127                android:value="androidx.startup" />
+127-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+128        </provider>
+129
+130        <receiver
+130-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+131            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+131-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+132            android:directBootAware="false"
+132-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+133            android:enabled="true"
+133-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+134            android:exported="true"
+134-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+135            android:permission="android.permission.DUMP" >
+135-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+136            <intent-filter>
+136-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+137                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+138            </intent-filter>
+139            <intent-filter>
+139-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+140                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+141            </intent-filter>
+142            <intent-filter>
+142-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+143                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+143-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+143-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+144            </intent-filter>
+145            <intent-filter>
+145-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+146                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+146-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+146-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Craig\.gradle\caches\transforms-3\b72b7b82f0312570e02e9e180c961d22\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+147            </intent-filter>
+148        </receiver>
+149    </application>
+150
+151</manifest>

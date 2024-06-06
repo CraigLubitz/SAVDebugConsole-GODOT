@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4y7nokfiuluh"]
+
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/SAVDebugConsole.gd" id="1_604nl"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/DebugConsole.gd" id="1_8883r"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/ScrollContainera.gd" id="2_ol78q"]
+[ext_resource type="StyleBox" uid="uid://b62lp4ve7ancs" path="res://addons/SAVDebugConsole/scenes/button2.tres" id="4_3pe6v"]
+
+[sub_resource type="SystemFont" id="SystemFont_4eqe7"]
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_yxf10"]
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0cgv"]
+bg_color = Color(0, 0.0117647, 0.00392157, 1)
+
+[node name="SAVDebugConsole" type="CanvasLayer"]
+offset = Vector2(10, 10)
+transform = Transform2D(1, 0, 0, 1, 10, 10)
+script = ExtResource("1_604nl")
+logcat = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.694
+anchor_bottom = 0.926
+offset_right = 0.511963
+offset_bottom = -0.0480347
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8883r")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect/MarginContainer"]
+layout_mode = 2
+color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PrintTestLogEntry" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
+theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_fonts/font = SubResource("SystemFont_4eqe7")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_3pe6v")
+theme_override_styles/hover = ExtResource("4_3pe6v")
+text = " print "
+
+[node name="LogcatClear" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
+theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_fonts/font = SubResource("SystemFont_yxf10")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_3pe6v")
+theme_override_styles/hover = ExtResource("4_3pe6v")
+text = " clear logcat"
+
+[node name="MainScrollContainer" type="ScrollContainer" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0cgv")
+horizontal_scroll_mode = 0
+script = ExtResource("2_ol78q")
+
+[node name="MainVBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer/VBoxContainer/MainScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ColorRect/MarginContainer/VBoxContainer/MainScrollContainer/MainVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "-- List empty --"
+fit_content = true
+
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/PrintTestLogEntry" to="Control/ColorRect" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/LogcatClear" to="Control/ColorRect" method="_on_logcat_clear_pressed"]

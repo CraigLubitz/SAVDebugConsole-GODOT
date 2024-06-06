@@ -18,14 +18,15 @@ GODOT Build 4.2
 &nbsp;
 
 # Features:
+- GDScript supports all GODOT platforms
+- Android support for logcat
+- Clear logcat button
 - Scrollable window
 - Built in GODOT log entry generator
 	- Entries are date and time stamped with milliseconds
 	- Include Stack Trace
 - Light weight and fast
 - Easy to use and modfsify
-- Android support for logcat
-- Clear logcat button
 
 &nbsp;
 
@@ -36,7 +37,7 @@ Console Entries Max : int = 100
 	- must be an integer > 0
 
 Logcat : bool = false
-- Switch between GODOT logs and logcat:
+- Switch between GODOT logs and logcat output
 	- True = logcat logs
 
 &nbsp;

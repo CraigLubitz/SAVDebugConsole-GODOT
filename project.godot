@@ -11,11 +11,15 @@ config_version=5
 [application]
 
 config/name="SAV Debug Console - GODOT"
-run/main_scene="res://SAVDebugConsoleExample.tscn"
+run/main_scene="res://addons/SAVDebugConsole/examples/scenes/QuestExample.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 
 [debug]
 
@@ -27,7 +31,7 @@ project/assembly_name="test debug console 1"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SAVDebugConsole/plugin.cfg")
+enabled=PackedStringArray("res://addons/SAVDebugConsole/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
 
 [input_devices]
 
@@ -35,8 +39,28 @@ pointing/emulate_touch_from_mouse=true
 pointing/android/enable_long_press_as_right_click=true
 pointing/android/enable_pan_and_scale_gestures=true
 
+[layer_names]
+
+3d_physics/layer_1="Static World"
+3d_physics/layer_2="Dynamic World"
+3d_physics/layer_3="Pickable Objects"
+3d_physics/layer_4="Wall Walking"
+3d_physics/layer_5="Grappling Target"
+3d_physics/layer_17="Held Objects"
+3d_physics/layer_18="Player Hands"
+3d_physics/layer_19="Grab Handles"
+3d_physics/layer_20="Player Body"
+3d_physics/layer_21="Pointable Objects"
+3d_physics/layer_22="Hand Pose Areas"
+3d_physics/layer_23="UI Objects"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+
+[xr]
+
+openxr/enabled=true
+shaders/enabled=true
