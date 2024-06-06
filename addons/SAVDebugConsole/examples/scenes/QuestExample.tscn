@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_y2c1x"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_xqvph"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_iwdlh"]
-[ext_resource type="PackedScene" uid="uid://b4y7nokfiuluh" path="res://addons/SAVDebugConsole/scenes/DebugConsole.tscn" id="7_5bxcy"]
+[ext_resource type="PackedScene" uid="uid://b4y7nokfiuluh" path="res://addons/SAVDebugConsole/scenes/SAVDebugConsole.tscn" id="7_5bxcy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbe3t"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SAV Debug Console - GODOT"
-run/main_scene="res://addons/SAVDebugConsole/examples/scenes/QuestExample.tscn"
+run/main_scene="res://addons/SAVDebugConsole/examples/scenes/SAVDebugConsoleExample.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
@@ -31,7 +31,7 @@ project/assembly_name="test debug console 1"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SAVDebugConsole/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 
 [input_devices]
 

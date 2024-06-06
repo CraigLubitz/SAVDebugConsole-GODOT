@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4y7nokfiuluh"]
 
-[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/SAVDebugConsole.gd" id="1_604nl"]
-[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/DebugConsole.gd" id="1_8883r"]
-[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/ScrollContainera.gd" id="2_ol78q"]
-[ext_resource type="StyleBox" uid="uid://b62lp4ve7ancs" path="res://addons/SAVDebugConsole/scenes/button2.tres" id="4_3pe6v"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/SAVDebugConsole.gd" id="1_v6q21"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/DebugConsole.gd" id="2_66oqp"]
+[ext_resource type="StyleBox" uid="uid://b62lp4ve7ancs" path="res://addons/SAVDebugConsole/scenes/button2.tres" id="3_v5oct"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/ScrollContainera.gd" id="4_qjlse"]
 
 [sub_resource type="SystemFont" id="SystemFont_4eqe7"]
 subpixel_positioning = 0
@@ -17,8 +17,7 @@ bg_color = Color(0, 0.0117647, 0.00392157, 1)
 [node name="SAVDebugConsole" type="CanvasLayer"]
 offset = Vector2(10, 10)
 transform = Transform2D(1, 0, 0, 1, 10, 10)
-script = ExtResource("1_604nl")
-logcat = true
+script = ExtResource("1_v6q21")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -36,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8883r")
+script = ExtResource("2_66oqp")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
 layout_mode = 1
@@ -67,8 +66,8 @@ theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
 theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
 theme_override_fonts/font = SubResource("SystemFont_4eqe7")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("4_3pe6v")
-theme_override_styles/hover = ExtResource("4_3pe6v")
+theme_override_styles/normal = ExtResource("3_v5oct")
+theme_override_styles/hover = ExtResource("3_v5oct")
 text = " print "
 
 [node name="LogcatClear" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -78,8 +77,8 @@ theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
 theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
 theme_override_fonts/font = SubResource("SystemFont_yxf10")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("4_3pe6v")
-theme_override_styles/hover = ExtResource("4_3pe6v")
+theme_override_styles/normal = ExtResource("3_v5oct")
+theme_override_styles/hover = ExtResource("3_v5oct")
 text = " clear logcat"
 
 [node name="MainScrollContainer" type="ScrollContainer" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
@@ -88,7 +87,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_b0cgv")
 horizontal_scroll_mode = 0
-script = ExtResource("2_ol78q")
+script = ExtResource("4_qjlse")
 
 [node name="MainVBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer/VBoxContainer/MainScrollContainer"]
 layout_mode = 2
