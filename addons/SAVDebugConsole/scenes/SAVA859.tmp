@@ -1,0 +1,175 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4y7nokfiuluh"]
+
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/SAVDebugConsole.gd" id="1_v6q21"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/StaticMethods.gd" id="2_42rwc"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/DebugConsole.gd" id="2_66oqp"]
+[ext_resource type="StyleBox" uid="uid://b62lp4ve7ancs" path="res://addons/SAVDebugConsole/scenes/button2.tres" id="3_v5oct"]
+[ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/ScrollContainera.gd" id="4_qjlse"]
+
+[sub_resource type="SystemFont" id="SystemFont_tk5k7"]
+
+[sub_resource type="FontVariation" id="FontVariation_vg3ok"]
+base_font = SubResource("SystemFont_tk5k7")
+spacing_top = 3
+spacing_bottom = 3
+
+[sub_resource type="SystemFont" id="SystemFont_4eqe7"]
+subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_ic33t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0cgv"]
+bg_color = Color(0, 0.0117647, 0.00392157, 1)
+
+[node name="SAVDebugConsole" type="CanvasLayer"]
+offset = Vector2(10, 10)
+transform = Transform2D(1, 0, 0, 1, 10, 10)
+script = ExtResource("1_v6q21")
+logcat_variables = "SAVDebugConsole:D godot:E *:S"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+offset_right = 800.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_42rwc")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_66oqp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect/MarginContainer"]
+layout_mode = 2
+color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="countof" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_v5oct")
+text = "0 of 0"
+vertical_alignment = 1
+
+[node name="FilterText" type="TextEdit" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = 10
+placeholder_text = "Filter Properties"
+
+[node name="FilterButton" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/line_spacing = -24
+theme_override_fonts/font = SubResource("FontVariation_vg3ok")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_v5oct")
+text = " O 
+    \\ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PrintTest" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
+theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_fonts/font = SubResource("SystemFont_4eqe7")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_v5oct")
+theme_override_styles/hover = ExtResource("3_v5oct")
+text = " print "
+
+[node name="LogTest" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
+theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_fonts/font = SubResource("SystemFont_4eqe7")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_v5oct")
+theme_override_styles/hover = ExtResource("3_v5oct")
+text = " log "
+
+[node name="LogcatClear" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(75, 50)
+layout_direction = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.686275, 0.686275, 0.686275, 0.686275)
+theme_override_colors/font_hover_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_fonts/font = SubResource("FontVariation_ic33t")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_v5oct")
+theme_override_styles/hover = ExtResource("3_v5oct")
+text = " clear "
+
+[node name="ScollBottom" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/line_spacing = -17
+theme_override_fonts/font = SubResource("FontVariation_vg3ok")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_v5oct")
+text = " |
+ V"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainScrollContainer" type="ScrollContainer" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0cgv")
+follow_focus = true
+horizontal_scroll_mode = 0
+script = ExtResource("4_qjlse")
+
+[node name="MainVBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer/VBoxContainer/MainScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ColorRect/MarginContainer/VBoxContainer/MainScrollContainer/MainVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "-- List empty --"
+fit_content = true
+
+[connection signal="text_changed" from="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/FilterText" to="Control/ColorRect" method="_on_filter_text_text_changed"]
+[connection signal="gui_input" from="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/FilterButton" to="Control/ColorRect" method="_on_filter_button_gui_input"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/PrintTest" to="Control/ColorRect" method="_on_print_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/LogTest" to="Control/ColorRect" method="_on_log_pressed"]
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/LogcatClear" to="Control/ColorRect" method="_on_logcat_clear_pressed"]
+[connection signal="gui_input" from="Control/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ScollBottom" to="Control/ColorRect" method="_on_scoll_bottom_gui_input"]

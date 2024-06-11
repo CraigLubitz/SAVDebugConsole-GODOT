@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://gvl6ssi1sopn"]
+[gd_scene load_steps=14 format=3 uid="uid://gvl6ssi1sopn"]
 
 [ext_resource type="Script" path="res://addons/SAVDebugConsole/examples/scripts/3D_Main.gd" id="1_0d7v8"]
+[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_67kuv"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="3_1qodn"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_y2c1x"]
+[ext_resource type="PackedScene" uid="uid://dgdb1texynduw" path="res://addons/godot-xr-tools/objects/virtual_keyboard.tscn" id="5_mc75t"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_xqvph"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_iwdlh"]
 [ext_resource type="PackedScene" uid="uid://b4y7nokfiuluh" path="res://addons/SAVDebugConsole/scenes/SAVDebugConsole.tscn" id="7_5bxcy"]
@@ -50,6 +52,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170874, 0)
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160328, 0.347228)
 
+[node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_67kuv")]
+
 [node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
 
@@ -65,7 +69,10 @@ show_laser = 2
 laser_length = 1
 
 [node name="Viewport2Din3D2" parent="." instance=ExtResource("6_iwdlh")]
-transform = Transform3D(-0.001, 0, -8.74228e-11, 0, 0.001, 0, 8.74228e-11, 0, -0.001, 0.0215321, 1.19006, -0.385635)
-screen_size = Vector2(640, 360)
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.0215321, 1.48156, -0.513249)
+screen_size = Vector2(1024, 768)
 scene = ExtResource("7_5bxcy")
-viewport_size = Vector2(800, 600)
+viewport_size = Vector2(1024, 768)
+
+[node name="VirtualKeyboard" parent="Viewport2Din3D2" instance=ExtResource("5_mc75t")]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, -21.5321, -680.541, 0.806519)
