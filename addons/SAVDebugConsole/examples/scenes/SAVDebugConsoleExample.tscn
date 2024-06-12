@@ -5,5 +5,3 @@
 [node name="SAVDebugConsoleExample" type="Node2D"]
 
 [node name="SAVDebugConsole" parent="." instance=ExtResource("1_82b3t")]
-scale = Vector2(1.5, 1)
-transform = Transform2D(1.5, 0, 0, 1, 10, 10)

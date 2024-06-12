@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://addons/SAVDebugConsole/scripts/ScrollContainera.gd" id="4_qjlse"]
 
 [sub_resource type="SystemFont" id="SystemFont_tk5k7"]
+subpixel_positioning = 0
 
 [sub_resource type="FontVariation" id="FontVariation_vg3ok"]
 base_font = SubResource("SystemFont_tk5k7")

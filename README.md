@@ -91,7 +91,8 @@ Logcat : bool = false
 
 &nbsp;
 
-Logcat variables : String = "\-v, color "
+Logcat variables : String = ""<br>
+** the "-v" can no longer be overridden, it is used internally to control color and polling<br>
 - Additional variables to pass to logcat
 - Default value shows colored entries
 - Currently we use a slightly different format than regular command line options
@@ -100,25 +101,30 @@ Logcat variables : String = "\-v, color "
 	- \-s, \<tag1\>,\<tag2\>
 		- Silence all tags but the 2 tags indicated
 		- Example: 
-			- \-v, color, \-s, SAVDebugConsole godot
+			- \-s, SAVDebugConsole godot
 				- comma between the tags in this case is optional
-			- \-v, color, \-s, VrApi,PerformanceManager_ZSF
+			- \-s, VrApi,PerformanceManager_ZSF
 				- Quest users see https://developer.oculus.com/documentation/native/android/ts-logcat/
 	- \<tag1\>:D \<tag2\>:E *:S 
 		- Silence all tags but Debug messages from tag1 and Error messages from tag2
 		- Example: 
-			- \-v, color, SAVDebugConsole:D godot:E *:S
+			- \SAVDebugConsole:D godot:E *:S
 	- Replace \<tag\> with the tag string
 	- Character formatting for spaces or no spaces after commas matter
 	- Due to how our parsing works a space after commas is required for command line parameters
-	- One more set of examples of how to show a brief logcat with color
-		- \-v, color brief, \-s, SAVDebugConsole godot 
-		- \-v, color,brief, \-s, SAVDebugConsole,godot
-		- \-v, color brief, \-s, SAVDebugConsole,godot
-		- \-v, color,brief, \-s, SAVDebugConsole godot
-		- add more options etc.
 	- Not all command line options are tested or supported
 		- See: https://developer.android.com/tools/logcat
+
+&nbsp;
+
+Polling : bool = false
+- Use polling to gather logcat entries
+	- True = Use polling
+* Some Android phones use buffering. 
+	* This can appear a no logging or logging partial entries.
+	* Set Polling equal True 
+
+ 
 
 &nbsp;
 
@@ -153,9 +159,13 @@ _SAVDebugConsole
 		
 &nbsp;
 
+# Additonal help:
+If the quest version runs in a window, <br>
+	- Check that "QuestExample" is "Set as Main Scene"  <br>
+	- Check project setting XR is enabled <br>
+	- Check that it has a runnable Android Quest Export
+&nbsp;
+
 # Known issues:
-Some Android phones use buffering. This can appear a no logging or logging partial entries.
-- Next versionish will contain a legacy method for dealing with this
-- Future version may be able to use a stdout update planned for GODOT
 
 Unknown behavior if GODOT log rotates

@@ -13,6 +13,15 @@ var pid: int = 0	# process id of the running logcat proxy
 var reposition_vertical_scroll_next_frame: bool = false	# indicates a scroll to bottom in needed
 var filteron : bool = false # indicates the filter state, true = filtering
 
+#LOGCAT
+var islogcat = false;
+var logcatvars = "";
+
+#POLL
+var lastlogentrystring = ""
+var detla_last_logcat = 0
+var polling = false;
+var previousdt = Time.get_datetime_string_from_system()
 
 func _ready():
 	if Engine.is_editor_hint():
@@ -23,6 +32,14 @@ func _ready():
 	vbox = $MarginContainer/VBoxContainer/MainScrollContainer/MainVBoxContainer
 	savdebugconsole = get_parent().get_parent()
 
+	
+	if savdebugconsole.logcat_polling != null and savdebugconsole.logcat_polling == true:
+		polling = true;
+	if savdebugconsole.logcat != null and savdebugconsole.logcat == true:
+		islogcat = true;
+	if savdebugconsole.logcat_variables != null:
+		logcatvars = savdebugconsole.logcat_variables
+		
 	# console_entries_max
 	if savdebugconsole.console_entries_max != null and savdebugconsole.console_entries_max > 0:
 		console_entries_max = savdebugconsole.console_entries_max
@@ -38,7 +55,7 @@ func _ready():
 	#_SAVDebugConsole.Log("SAVDebugConsole", "VERBOSE", _SAVDebugConsole.LogLevel.VERBOSE)
 	
 	# not logcat
-	if savdebugconsole.logcat == null or savdebugconsole.logcat == false:
+	if !islogcat:
 		$MarginContainer/VBoxContainer/HBoxContainer/PrintTest.visible = true;
 		_load() 
 		return
@@ -62,12 +79,14 @@ func _exit_tree():
 	log_file.close() # Close File
 
 
+var dt = ""
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !log_file_valid:
+		return;
 	var thiscount = 0	# can be used to fine tune performance on larger logs
 	# if there is new text in the log file, add a new entry
-	#while thiscount < console_entries_max and log_file_valid and log_file.get_position() < log_file.get_length():
-	while log_file.get_position() < log_file.get_length():
+	while log_file_valid and log_file.get_position() < log_file.get_length():
 		# do we need to trim the hierarchy to the console_entries_max
 		if vbox.get_child_count() > console_entries_max + 1:
 			vbox.remove_child(vbox.get_child(1))
@@ -75,6 +94,10 @@ func _process(delta):
 		# get the next line in the log file
 		var entry = log_file.get_line()
 		
+		# throw away dashed lines
+		if entry.begins_with("-"):
+			continue
+			
 		# create a label to hold it
 		var RTL = RichTextLabel.new()
 		# turn on color features
@@ -87,15 +110,16 @@ func _process(delta):
 		# add to VBoxContainer
 		vbox.add_child(RTL)
 
+# !!!!!!!!!!!!!!!!having issues
 		# Only if get_v_scroll_bar hasnt grown past the size or the scroll is already at the bottom,
 			# add control and scroll bottom
 		# https://forum.godotengine.org/t/auto-scroll-down-if-user-is-at-bottom-of-chat-but-if-they-are-not-display-a-scroll-down-button/7034
-		var scoll_rec_size = scrollcontainer.get_rect().size.y
-		var scoll_max_value = scrollcontainer.get_v_scroll_bar().max_value
-		var scoll_value = scrollcontainer.get_v_scroll_bar().value
-		if scoll_max_value < scoll_rec_size or scoll_max_value - scoll_rec_size  == scoll_value:
-			await get_tree().process_frame
-			vbox.get_parent().ensure_control_visible(RTL)
+		#var scoll_rec_size = scrollcontainer.get_rect().size.y
+		#var scoll_max_value = scrollcontainer.get_v_scroll_bar().max_value
+		#var scoll_value = scrollcontainer.get_v_scroll_bar().value
+		#if scoll_max_value < scoll_rec_size or scoll_max_value - scoll_rec_size  == scoll_value:
+			#await get_tree().process_frame
+			#vbox.get_parent().ensure_control_visible(RTL)
 
 		thiscount += 1
 		
@@ -110,21 +134,64 @@ func _process(delta):
 			# display counts
 			$MarginContainer/VBoxContainer/HBoxContainer/countof.text = str(get_tree().get_nodes_in_group("savdebugconsole_entryvisible").size()) + " of " + str(vbox.get_child_count())
 		
+
 		# handle logcat color
 		# get the root of this control
-		if savdebugconsole.logcat != null and savdebugconsole.logcat == true and RTL.text.begins_with("\u001B"):
+		if islogcat and RTL.text.begins_with("\u001B"):
 			if RTL.text.ends_with("[0m"):
-				RTL.text = RTL.text.rstrip("[0m") + "[/color]"
+				RTL.text = RTL.text.replace("[0m", "[/color]")
 			if RTL.text.begins_with("\u001B[31m"):
-				RTL.text = "[color=red]" + RTL.text.lstrip("\u001B[31m")
+				dt = RTL.text.replace("\u001B[31m", "")
+				RTL.text = "[color=red]" + dt
 			if RTL.text.begins_with("\u001B[32m"):
-				RTL.text = "[color=green]" + RTL.text.lstrip("\u001B[32m")
+				dt = RTL.text.replace("\u001B[32m", "")
+				RTL.text = "[color=green]" + dt
 			if RTL.text.begins_with("\u001B[33m"):
-				RTL.text = "[color=yellow]" + RTL.text.lstrip("\u001B[33m")
+				dt = RTL.text.replace("\u001B[33m", "")
+				RTL.text = "[color=yellow]" + dt
 			if RTL.text.begins_with("\u001B[34m"):
-				RTL.text = "[color=blue]" + RTL.text.lstrip("\u001B[34m")
+				dt = RTL.text.replace("\u001B[34m", "")
+				RTL.text = "[color=blue]" + dt
 			if RTL.text.begins_with("\u001B[39m"):
-				RTL.text = RTL.text.lstrip("\u001B[39m")
+				dt = RTL.text.replace("\u001B[39m", "")
+				RTL.text = dt
+
+	if islogcat and polling:
+		dt = dt.left(26)
+		# get date time portion
+# used 2 here, seems more responsive ** refactor
+		if detla_last_logcat > 2 or lastlogentrystring != dt:
+			#clip off the last 6 digits
+			var usec = int(dt.right(6))
+			# inc by 1
+			usec += 1.0
+			#if it crosssed 7 digits
+			#trim 1st digit
+			if usec > 999999:
+				usec -= 1000000
+# flag here, and add one to the date
+			#convert dt
+			var unixdatetime = Time.get_unix_time_from_datetime_string(dt)
+			var converteddatetime = Time.get_datetime_string_from_unix_time(unixdatetime)
+			# way to validate this happened
+			if converteddatetime > previousdt and unixdatetime > 0:
+				previousdt = converteddatetime
+				lastlogentrystring = dt
+			else:
+				converteddatetime = previousdt
+			converteddatetime = converteddatetime.replace("T", " ")
+			converteddatetime += "." + str(usec)
+			# use converteddatetime!
+			var poll_variables = ["-v", "year usec color", "-d", "-t", converteddatetime, "-f",  log_file_path]
+			if logcatvars.length() == 0:
+				pid = OS.execute("logcat", poll_variables)
+			else:
+				poll_variables = Array(logcatvars.split(", ")) + poll_variables
+				pid = OS.execute("logcat", poll_variables)
+			detla_last_logcat = 0
+		else:
+			# check again every second
+			detla_last_logcat += delta
 
 
 # logcat specific load routine
@@ -135,15 +202,27 @@ func _load_logcat():
 	log_file = FileAccess.open(log_file_path, FileAccess.WRITE) # Open File
 	log_file.store_line("Waiting on Logcat")
 	log_file.close() # Close File
+	
+#POLL
+	if polling:
+		# use console_entries_max for initial load
+		var poll_variables = ["-v", "year usec color", "-d", "-t", console_entries_max, "-f",  log_file_path]
+		if logcatvars.length() == 0:
+			pid = OS.execute("logcat", poll_variables)
+		else:
+			poll_variables = Array(logcatvars.split(", ")) + poll_variables
+			pid = OS.execute("logcat", poll_variables)
+		_load()
+		detla_last_logcat = 0
+		return
 
 	# start logcat with output to our proxy file
 	# Please note: ["-f",  log_file_path] at a minimum is required for SAVDebugConsole to function
 	# get root 
-	if savdebugconsole.logcat_variables == null or savdebugconsole.logcat_variables.length() == 0:
-		pid = OS.create_process("logcat", ["-f",  log_file_path])
+	if logcatvars.length() == 0:
+		pid = OS.create_process("logcat", ["-v", "color", "-T", console_entries_max, "-f",  log_file_path])
 	else:
-		var variables = Array(savdebugconsole.logcat_variables.split(", ")) + ["-f",  log_file_path]
-		#var variables = ["-T", "06-10 22:13:14.000", "-f",  log_file_path ]
+		var variables = Array(logcatvars.split(", ")) + ["-v", "color", "-T", console_entries_max, "-f",  log_file_path]
 		pid = OS.create_process("logcat", variables)
 	_SAVDebugConsole.Log("SAVDebugConsole", "PID=" + str(pid))
 
@@ -163,7 +242,7 @@ func _on_print_pressed():
 	_logWithTime("SAVDebugConsole - Test Message", false, true)
 
 func _on_log_pressed():
-	_logWithTime("SAVDebugConsole - Test Message", true)
+	_logWithTime("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", true)
 
 # toggle filtering
 func _on_filter_button_gui_input(event):
@@ -208,6 +287,14 @@ func _on_filter_text_text_changed():
 
 # clear logcat button
 func _on_logcat_clear_pressed():
+	if polling:
+		var exitcode = OS.execute("logcat", ["-c"])
+		while vbox.get_child_count() > 1:
+			vbox.remove_child(vbox.get_child(1))
+		# re-load everything
+		#_load_logcat()
+		return
+		
 	# tell _process to skip processing our stuff
 	log_file_valid = false
 	# kill the process from above
@@ -228,7 +315,7 @@ func _on_logcat_clear_pressed():
 
 func _on_scoll_bottom_gui_input(event):
 	if (event is InputEventMouseButton && event.pressed && event.button_index == 1):
-		scrollcontainer.get_v_scroll_bar().value = scrollcontainer.get_v_scroll_bar().max_value
+		scrollcontainer.scroll_vertical = scrollcontainer.get_v_scroll_bar().max_value
 
 
 # function to enhance godot logging
